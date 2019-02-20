@@ -1,0 +1,18 @@
+@import '~styles/sass';
+
+.this {
+  padding: rem(64px) 0;
+
+  $colors:
+    'white' $white;
+
+  @include variants---map(background, $colors);
+
+  &---divided {
+    border-top: $border;
+  }
+
+  &---flush {
+    padding: 0;
+  }
+}

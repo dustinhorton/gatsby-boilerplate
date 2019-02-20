@@ -1,0 +1,7 @@
+@import '~styles/sass';
+
+.this {
+  &---full {
+    @include buton-link---full;
+  }
+}

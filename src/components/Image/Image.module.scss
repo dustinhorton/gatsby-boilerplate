@@ -1,0 +1,13 @@
+@import '~styles/sass';
+
+.this {
+  &---center {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &---full {
+    width: 100%;
+    max-width: none;
+  }
+}

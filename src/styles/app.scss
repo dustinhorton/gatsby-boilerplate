@@ -1,0 +1,7 @@
+@import '~styles/sass';
+@import '../../node_modules/playbook-react/css/base';
+
+body {
+  @media (max-width: $desktop) { font-size: $font-size - 1; }
+  @media (max-width: $tablet)  { font-size: $font-size - 2; }
+}

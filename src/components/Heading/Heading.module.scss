@@ -1,0 +1,16 @@
+@import '~styles/sass';
+@import '~styles/mixins/headings';
+
+.this {
+  @include text-align-variants;
+
+  &---1 { @include h1; }
+  &---2 { @include h2; }
+  &---3 { @include h3; }
+  &---4 { @include h4; }
+
+  // keep last
+  &---flush {
+    margin-bottom: 0;
+  }
+}

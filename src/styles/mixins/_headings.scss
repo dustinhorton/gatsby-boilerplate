@@ -1,0 +1,21 @@
+@import '~styles/sass';
+
+@mixin h {
+  @include margin(x, auto);
+}
+
+@mixin h1 {
+  @include h;
+}
+
+@mixin h2 {
+  @include h;
+}
+
+@mixin h3 {
+  @include h;
+}
+
+@mixin h4 {
+  @include h;
+}

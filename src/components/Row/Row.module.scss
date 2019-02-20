@@ -1,0 +1,16 @@
+@import '~styles/sass';
+
+@mixin margin($margin) {
+  &:not(:last-child) {
+    margin-bottom: $margin;
+  }
+}
+
+.this {
+  &---medium { @include margin(rem(12px)); }
+
+  // keep last
+  &---flush {
+    @include margin(0);
+  }
+}

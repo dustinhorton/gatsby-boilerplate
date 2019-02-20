@@ -1,0 +1,30 @@
+@import '~styles/sass';
+
+$gutter: 36px;
+
+@mixin w($width) {
+  max-width: $width + ($gutter * 2);
+}
+
+.this {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 rem($gutter);
+
+  $alignments:
+    left,
+    right;
+
+  @each $i in $alignments {
+    &---#{$i} {
+      margin-#{$i}: 0;
+      margin-#{opposite-direction($i)}: auto;
+    }
+  }
+
+  &---flush {
+    padding: 0 !important;  // override mqs
+  }
+
+  &---medium { @include w(1000px); }
+}

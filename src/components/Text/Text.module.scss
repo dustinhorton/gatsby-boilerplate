@@ -1,0 +1,56 @@
+@import '~styles/sass';
+
+.this {
+  @include text-align-variants;
+
+  $colors:
+    'black' $black;
+
+  @include variants---map(color, $colors);
+
+  &---copy {
+    line-height: $line-height;
+  }
+
+  &---flush {
+    margin-bottom: 0;
+  }
+
+  $sizes:
+    'inherit' inherit,
+    'medium'  rem($font-size);
+
+  @include variants---map(font-size, $sizes);
+
+  $styles:
+    inherit,
+    italic,
+    normal;
+
+  @include variants---list(font-style, $styles, style);
+
+  &---truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &---underline {
+    border-bottom: 1px currentColor solid;
+  }
+
+  $weights:
+    inherit,
+    bold,
+    normal;
+
+  @include variants---list(font-weight, $weights, weight);
+
+  &---no-wrap {
+    white-space: nowrap;
+  }
+}
+
+p.this {
+  margin-bottom: $block-m;
+}

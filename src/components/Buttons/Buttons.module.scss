@@ -1,0 +1,39 @@
+@import '~styles/sass';
+
+$gutter: rem(16px) / 2;
+
+.this {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: -$gutter;
+
+  $alignments:
+    'left'   flex-start,
+    'center' center,
+    'right'  flex-end;
+
+  @include variants---map(justify-content, $alignments);
+
+  &---y {
+    flex-direction: column;
+    margin: -$gutter;
+
+    .item {
+      width: 100%;
+      margin: $gutter;
+
+      :global(.Button) {
+        @include buton-link---full;
+      }
+    }
+  }
+
+  &---split {
+    justify-content: space-between;
+  }
+}
+
+.item {
+  margin: $gutter;
+}

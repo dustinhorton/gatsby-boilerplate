@@ -1,0 +1,63 @@
+// stylelint-disable no-descending-specificity
+@import '~styles/sass';
+@import '~styles/mixins/heading';
+//@import '~styles/mixins/link';
+
+.Copy {
+  $margin-bottom: $block-m;
+
+  column-gap: $gutter;
+  line-height: $line-height;
+
+  h1,
+  h2 {
+    @include h2;
+
+    &:not(:first-child) {
+      margin-top: $m * 1.75;
+    }
+  }
+
+  h3 {
+    @include h3;
+
+    &:not(:first-child) {
+      margin-top: $m * 1.5;
+    }
+  }
+
+  blockquote,
+  ol,
+  ul,
+  li,
+  p {
+    break-inside: avoid;
+  }
+
+  blockquote,
+  ol,
+  ul,
+  p {
+    &:not(:last-child) {
+      margin-bottom: $margin-bottom;
+    }
+  }
+
+  ol,
+  ul {
+    padding-left: 1.35em;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  hr {
+    background: $border-color;
+    margin: $m 0;
+  }
+}

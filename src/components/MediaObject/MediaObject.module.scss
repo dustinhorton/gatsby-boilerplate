@@ -1,0 +1,44 @@
+@import '~styles/sass';
+
+@mixin figure($margin) {
+  > .figure {
+    &:first-child { margin-right: $margin; }
+    &:last-child  { margin-left:  $margin; }
+  }
+}
+
+.this {
+  display: flex;
+
+  &---center {
+    align-items: center;
+  }
+
+  &---inline {
+    display: inline-flex;
+  }
+
+  &---medium { @include figure(12px); }
+
+  // keep last
+  &---reset {
+    &---tablet {
+      @media (max-width: $tablet) {
+        flex-direction: column;
+
+        > .figure {
+          @include figure(0);
+
+          &:first-child {
+            margin-bottom: rem(56px);
+          }
+        }
+      }
+    }
+  }
+}
+
+.body {
+  min-width: 1%;
+  flex: 1;
+}

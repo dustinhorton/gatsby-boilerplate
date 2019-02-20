@@ -1,0 +1,37 @@
+@import '~styles/sass';
+
+@mixin inline {
+  display: inline;
+}
+
+.this {
+  &---inline {
+    @include inline;
+  }
+
+  &---hide {
+    @each $name, $val in $breakpoints {
+      &---#{$name} {
+        @media (max-width: $val) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &---show {
+    display: none;
+
+    @each $name, $val in $breakpoints {
+      &---#{$name} {
+        @media (max-width: $val) {
+          display: block;
+
+          &.this---inline {
+            @include inline;
+          }
+        }
+      }
+    }
+  }
+}
