@@ -16,10 +16,10 @@
    curl -L https://git.io/n-install | bash
    ```
 
-2. Install & use Node.js `10.11.0`
+2. Install & use the latest official Node.js release
 
    ```bash
-   n 10.15.1
+   n latest
    ```
 
 3. Install [Yarn](https://yarnpkg.com)

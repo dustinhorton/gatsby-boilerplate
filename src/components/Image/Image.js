@@ -1,12 +1,15 @@
 import classNames from 'classnames'
 import GatsbyImage from 'gatsby-image'
+import _ from 'lodash'
 import PropTypes from 'prop-types'
 import React from 'react'
 
 import styles from './Image.module.scss'
 
-export default function Image({ align, className, full, src, src2x, ...props }) {
-  if (src && typeof src === 'object') {
+export default function Image({ align, alt, className, full, src, src2x, ...props }) {
+  if (!src && !src2x) return null
+
+  if (_.isObject(src)) {
     return (
       <GatsbyImage fluid={src.childImageSharp.fluid} />
     )
@@ -16,6 +19,7 @@ export default function Image({ align, className, full, src, src2x, ...props }) 
     // eslint-disable-next-line jsx-a11y/alt-text
     <img
       {...props}
+      alt={alt}
       src={src}
       srcSet={src2x && `${src2x} 2x`}
       className={classNames(
@@ -25,6 +29,7 @@ export default function Image({ align, className, full, src, src2x, ...props }) 
         full && styles['this---full'],
         className,
       )}
+      aria-hidden={alt ? undefined : true}
     />
   )
 }

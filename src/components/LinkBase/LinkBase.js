@@ -2,9 +2,12 @@ import classNames from 'classnames'
 import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { isEmail, isMobilePhone } from 'validator'
+import {
+  isEmail,
+  isMobilePhone,
+} from 'validator'
 
-import formatPhone from 'utils/format-phone'
+import formatPhone from 'libs/format-phone'
 
 const emailPrefix = 'mailto:'
 
@@ -19,21 +22,21 @@ export default function LinkBase({ children, className, to, ...props }) {
     toIsPhone = isMobilePhone(to)
   }
 
-  if (!to || toIsEmail || toIsPhone || to.includes('http')) {
-    let href = to || null
+  if (!to || toIsEmail || toIsPhone || (to && to.includes('http'))) {
+    let href = to || undefined
 
-    if (toIsEmail || toIsPhone) {
-      body = children || to.replace(emailPrefix, '').replace('tel:', '')
+    if (toIsEmail) {
+      body = children || to.replace(emailPrefix, '')
+      href = `${emailPrefix}${to}`
     }
 
-    if (toIsEmail) href = `${emailPrefix}${to}`
-
     if (toIsPhone) {
-      href = formatPhone.toUri(to)
+      body = children || formatPhone.display(to)
+      href = formatPhone.uri(to)
     }
 
     return (
-      <a {...props} href={href} target={to ? '_blank' : null} className={componentClassNames}>
+      <a {...props} href={href} target={to ? '_blank' : undefined} className={componentClassNames}>
         {body}
       </a>
     )

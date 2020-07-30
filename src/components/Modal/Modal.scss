@@ -1,0 +1,52 @@
+@import '~styles/sass';
+
+$Modal--close-button-size: 48px;
+$Modal--close-button-offset: 24px;
+
+.Modal {
+  width: 100%;
+  margin: auto;
+
+  &--container {
+    position: relative;
+  }
+
+  &--inner {
+    @include scroll;
+  }
+
+  &--close-button {
+    position: absolute;
+    top: $Modal--close-button-offset;
+    right: $Modal--close-button-offset;
+    @include transition(opacity);
+  }
+
+  &---medium { max-width: 600px; }
+}
+
+.ReactModal {
+  &__Overlay {
+    @include scroll;
+    background: rgba($black, 0.7) !important;  // override inline
+    display: flex;
+    opacity: 0;
+    padding: ($Modal--close-button-offset * 2 + $Modal--close-button-size) $Modal--close-button-offset $Modal--close-button-offset;
+    z-index: 1;
+    @include transition(opacity);
+    transition-duration: 225ms;
+
+    &--after-open  { opacity: 1; }
+    &--before-close { opacity: 0; }
+  }
+
+  &__Body {
+    &--open {
+      overflow: hidden;
+    }
+  }
+
+  &__Content {
+    outline: 0;
+  }
+}

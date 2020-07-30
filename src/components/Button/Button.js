@@ -27,7 +27,7 @@ export default function Button({ children, className, faux, full, level, to, typ
 
   return (
     // eslint-disable-next-line react/button-has-type
-    <Component {...props} type={faux ? null : type} className={componentClassNames}>
+    <Component {...props} type={faux ? undefined : type} className={componentClassNames}>
       {children}
     </Component>
   )

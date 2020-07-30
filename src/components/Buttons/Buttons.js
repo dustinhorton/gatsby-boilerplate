@@ -10,25 +10,32 @@ export default function Buttons({
   buttonProps,
   children,
   className,
+  element,
+  size,
   split,
   ...props
 }) {
+  const Component = element
+
   const wrappedChildren = React.Children.map(children, (child, index) => {
-    if (child == null) {
+    if (child === undefined) {
       return null
     }
 
     const childWithProps = React.cloneElement(child, { ...buttonProps, ...props })
 
     return (
-      <div key={index} className={styles.item}>
+      <div
+        // eslint-disable-next-line react/no-array-index-key
+        key={index}
+        className={styles.item}>
         {childWithProps}
       </div>
     )
   })
 
   return (
-    <div
+    <Component
       className={classNames(
         'Buttons',
         styles.this,
@@ -39,7 +46,7 @@ export default function Buttons({
         className,
       )}>
       {wrappedChildren}
-    </div>
+    </Component>
   )
 }
 
@@ -49,9 +56,12 @@ Buttons.propTypes = {
   buttonProps: PropTypes.object,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  element: PropTypes.oneOf(['div', 'nav']),
+  size: PropTypes.oneOf(['medium']),
   split: PropTypes.bool,
 }
 
 Buttons.defaultProps = {
   axis: 'x',
+  element: 'div',
 }

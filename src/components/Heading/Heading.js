@@ -7,11 +7,11 @@ import styles from './Heading.module.scss'
 export default function Heading({ align, children, className, element, flush, level, levelStyle }) {
   let Component = 'h2'
 
-  if (level === '1') {
+  if (level === 1) {
     Component = 'h1'
-  } else if (level === '3') {
+  } else if (level === 3) {
     Component = 'h3'
-  } else if (level === '4') {
+  } else if (level === 4) {
     Component = 'h4'
   }
 

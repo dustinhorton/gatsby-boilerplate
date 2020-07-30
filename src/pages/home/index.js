@@ -5,7 +5,7 @@ import Layout from 'components/Layout'
 export default function Home() {
   return (
     <Layout className="Home">
-      Home
+      Hello.
     </Layout>
   )
 }

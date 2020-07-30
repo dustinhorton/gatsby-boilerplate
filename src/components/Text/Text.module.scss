@@ -3,6 +3,12 @@
 .this {
   @include text-align-variants;
 
+  $casings:
+    'lower' lowercase,
+    'upper' uppercase;
+
+  @include variants---map(text-transform, $casings);
+
   $colors:
     'black' $black;
 
@@ -53,4 +59,8 @@
 
 p.this {
   margin-bottom: $block-m;
+
+  &---flush {
+    margin-bottom: 0;
+  }
 }

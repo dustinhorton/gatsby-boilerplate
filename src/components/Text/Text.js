@@ -6,6 +6,7 @@ import styles from './Text.module.scss'
 
 export default function Text({
   align,
+  casing,
   children,
   className,
   color,
@@ -18,15 +19,18 @@ export default function Text({
   underline,
   weight,
   wrap,
+  ...props
 }) {
   const Component = element
 
   return (
     <Component
+      {...props}
       className={classNames(
         'Text',
         styles.this,
         align && styles[`this---${align}`],
+        casing && styles[`this---${casing}`],
         color && styles[`this---${color}`],
         copy && styles['this---copy'],
         flush && styles['this---flush'],
@@ -45,12 +49,18 @@ export default function Text({
 
 Text.propTypes = {
   align: PropTypes.oneOf(['left', 'center', 'right']),
+  casing: PropTypes.oneOf(['lower', 'upper']),
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   color: PropTypes.oneOf(['inherit']),
   copy: PropTypes.bool,
   element: PropTypes.oneOf([
+    'blockquote',
+    'cite',
     'div',
+    'figcaption',
+    'figure',
+    'footer',
     'header',
     'h1',
     'h2',
@@ -58,10 +68,14 @@ Text.propTypes = {
     'h4',
     'h5',
     'h6',
+    'label',
     'nav',
     'p',
     'section',
     'span',
+    'td',
+    'th',
+    'time',
   ]),
   flush: PropTypes.bool,
   size: PropTypes.oneOf(['inherit', 'medium']),
@@ -74,4 +88,5 @@ Text.propTypes = {
 
 Text.defaultProps = {
   element: 'span',
+  wrap: true,
 }
